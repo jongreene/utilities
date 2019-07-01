@@ -3,13 +3,15 @@ dir_guard=@mkdir -p $(OUT_O_DIR)
 CC=g++
 CPPFLAGS=-std=c++11
 
-programs := uart change_base
+programs := uart change_base tinkering
 
 $(OUT_O_DIR)/%.o: %.cpp
 	$(dir_guard)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $(patsubst %.o,%,$@)
 
 .PHONY : all clean $(programs)
+
+tinkering: build/tinkering.o
 
 uart: build/uart.o
 
